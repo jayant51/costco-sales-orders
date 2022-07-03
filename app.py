@@ -34,7 +34,20 @@ class Hello(Resource):
 
 class listSales(Resource):  
     def get(self):
-        response = jsonify(sales_types=" Bissel-ProHeat(20), LG-Refrigerator(9), Olay Vitamin C(15), Moistor Loation(5)")
+        total_sales={}
+        location_sale = []
+        data1 = {}
+        data2 = {}
+        data1['pacific commons'] = {"Bissel-ProHeat":"20", "LG-Refrigerator":"9", "Olay Vitamin C":"15", "Moistor Loation":"5"}
+        data2['RedWood City'] = {"Microlife Blood Pressure Monitor ":"7", "FlowFlex Covid Test Kit":"12", "ProBiotic":"10", "Immune Support":"8"}
+
+        
+        location_sale.append(data1)
+        location_sale.append(data2)
+        total_sales["sale"] = location_sale
+        #sales.append("item1","item2")
+        response = jsonify(total_sales)
+        #response = jsonify(sales_types=" Bissel-ProHeat(20), LG-Refrigerator(9), Olay Vitamin C(15), Moistor Loation(5)")
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
